@@ -1,6 +1,6 @@
 namespace :nexus do
   def strategy
-    @strategy ||= Capistrano::Nexus.new(self)
+    @strategy ||= Capistrano::Nexus.new(self, Capistrano::Nexus::DefaultStrategy)
   end
 
   desc 'Download the nexus artifact'
