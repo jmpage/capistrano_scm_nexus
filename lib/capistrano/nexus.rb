@@ -4,7 +4,7 @@ require 'net/http'
 
 class NexusTools
   def self.get_artifact_url(url, repository, group, artifact_id, extension, version)
-    response = Net::HTTP.get_response("#{url}/service/local/artifact/maven/redirect?g=#{group}&a=#{artifact_id}&e=#{extension}&v=#{version}&r=#{repository}")
+    response = Net::HTTP.get_response(URI("#{url}/service/local/artifact/maven/redirect?g=#{group}&a=#{artifact_id}&e=#{extension}&v=#{version}&r=#{repository}"))
     response.fetch('location') rescue nil
   end
 end
