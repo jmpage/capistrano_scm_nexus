@@ -1,3 +1,4 @@
+load File.expand_path('tasks/nexus.rake', __FILE__)
 require 'capistrano/scm'
 require 'net/http'
 
