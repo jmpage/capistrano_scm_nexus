@@ -19,9 +19,11 @@ class Capistrano::Nexus < Capistrano::SCM
           set(:artifact_url, url)
           true
         else
+          puts "Artifact URL is blank"
           false
         end
       rescue StandardError => e
+        puts "Recieved error: #{e}, backtrace: \n#{e.backtrace}"
         false
       end
     end
