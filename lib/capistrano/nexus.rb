@@ -29,11 +29,11 @@ class Capistrano::Nexus < Capistrano::SCM
     end
 
     def release
-      execute :tar, '-xzf', "#{fetch(:nexus_version)}.#{fetch(:nexus_extension)}", '-C', fetch(:release_path)
+      context.execute :tar, '-xzf', "#{fetch(:nexus_version)}.#{fetch(:nexus_extension)}", '-C', fetch(:release_path)
     end
 
     def download
-      execute :curl, '-o', "#{fetch(:nexus_version)}.#{fetch(:nexus_extension)}", fetch(:artifact_url)
+      context.execute :curl, '-o', "#{fetch(:nexus_version)}.#{fetch(:nexus_extension)}", fetch(:artifact_url)
     end
 
     def fetch_revision
