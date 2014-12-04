@@ -13,7 +13,7 @@ Set the following configuration variables in `config/deploy.rb` or wherever rele
 ```ruby
 set :scm, 'nexus'
 set :nexus_endpoint, 'http://nexus.example.com/nexus/content/repositories'
-set :nexus_artifact_name, my-application'
+set :nexus_artifact_name, 'my-application'
 set :nexus_artifact_version, '1.0.2'
 set :nexus_repository, 'releases'
 set :nexus_group_id, 'com.example'
