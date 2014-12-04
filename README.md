@@ -1,6 +1,3 @@
-capistrano-scm-nexus
-====================
-
 A gem that enables Capistrano 3 to download artifacts from Artifactory or Nexus
 and extract their contents to the release directory instead of using SCM to
 deploy an application.
