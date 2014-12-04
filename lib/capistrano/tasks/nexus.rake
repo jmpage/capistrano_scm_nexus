@@ -3,21 +3,14 @@ namespace :nexus do
     @strategy ||= Capistrano::Nexus.new(self, Capistrano::Nexus::DefaultStrategy)
   end
 
-  desc 'Download the nexus artifact'
-  task :download do
+  desc 'Copy artifact contents to releases'
+  task :create_release do
     on release_roles :all do
       within repo_path do
         strategy.download
-      end
-    end
-  end
-
-  desc 'Copy artifact contents to releases'
-  task create_release: 'nexus:download' do
-    on release_roles :all do
-      within repo_path do
         execute :mkdir, '-p', release_path
         strategy.release
+        strategy.cleanup
       end
     end
   end
@@ -25,6 +18,20 @@ namespace :nexus do
   desc 'Check that Nexus is reachable'
   task :check do
     exit 1 unless strategy.check
+  end
+
+  desc 'Create the repository folder'
+  task :clone do
+    on release_roles :all do
+      if strategy.test
+        info 'Repository folder exists'
+      else
+        info 'Repository folder does not exist: creating #{repo_path}'
+        within deploy_path do
+          execute :mkdir, '-p', repo_path
+        end
+      end
+    end
   end
 
   desc 'Determine the revision that will be deployed'
