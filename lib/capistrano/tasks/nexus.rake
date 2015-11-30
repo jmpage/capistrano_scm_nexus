@@ -1,6 +1,6 @@
 namespace :nexus do
   def strategy
-    @strategy ||= Capistrano::Nexus.new(self, Capistrano::Nexus::DefaultStrategy)
+    @strategy ||= Capistrano::Nexus.new(self, fetch(:nexus_strategy, Capistrano::Nexus::DefaultStrategy))
   end
 
   desc 'Copy artifact contents to releases'
