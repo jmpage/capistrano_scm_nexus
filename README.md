@@ -19,6 +19,9 @@ set :nexus_repository, 'releases'
 set :nexus_group_id, 'com.example'
 ```
 
+Other useful variables:
+- `nexus_strategy` - Overrides the strategy used by this gem with the constant that you specify.
+
 Based on the information you provide, the Nexus strategy will download a tgz
 from the nexus repository and untar and ungzip it into the releases directory.
 
